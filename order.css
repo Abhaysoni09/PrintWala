@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 :root {
   --primary: #f1ae2c;
   --bg: #15141b;
@@ -135,4 +136,143 @@ input:focus, textarea:focus { border-color: var(--primary); }
         justify-content: space-around;
         margin-top: 10px;
     }
+=======
+:root {
+  --primary: #f1ae2c;
+  --bg: #15141b;
+  --card-bg: #1f1d26;
+  --text: #a0a0a0;
+  --white: #ffffff;
+}
+
+body {
+  margin: 0; padding: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family:  sans-serif;
+}
+
+/* Nav Styles Same as yours */
+nav{
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+nav .nav_p{
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+}
+nav a{
+    position: relative;
+    text-decoration: none;
+    letter-spacing: 2px;
+    color: gray;
+    text-transform: uppercase;
+}
+nav a::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 2px;
+    background: #f1ae2c;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease;
+}
+nav a:hover::after{
+    transform: scaleX(1);
+}
+nav a:hover{
+    color: #f1ae2c;
+    transition:.5s ease;
+}
+nav h1{
+    color: #f1ae2c;
+}
+
+.main-wrapper { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+.order-container { display: grid; grid-template-columns: 1.5fr 1fr; gap: 30px; align-items: start; }
+
+.section-title { color: var(--primary); margin-bottom: 25px; font-size: 28px; }
+
+/* Form Cards */
+.step-card {
+  background: var(--card-bg);
+  padding: 25px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #2d2b36;
+}
+
+.step-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+.step-num { 
+  background: var(--primary); color: black; 
+  width: 30px; height: 30px; display: flex; 
+  align-items: center; justify-content: center; 
+  border-radius: 50%; font-weight: bold; 
+}
+
+.input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+
+input, textarea {
+  width: 100%; padding: 14px; background: #25232d;
+  border: 1px solid #3d3b46; border-radius: 10px;
+  color: white; margin-bottom: 15px; outline: none;
+}
+
+input:focus, textarea:focus { border-color: var(--primary); }
+
+/* Sidebar & Sticky */
+.sticky-card {
+  background: var(--card-bg);
+  padding: 25px;
+  border-radius: 20px;
+  position: sticky;
+  top: 20px;
+  border: 2px solid #2d2b36;
+}
+
+.preview-header img { 
+  width: 100%; height: 180px; object-fit: cover; 
+  border-radius: 12px; margin-bottom: 15px; 
+}
+
+.order-summary { margin: 20px 0; border-top: 1px solid #3d3b46; padding-top: 15px; }
+.summary-line { display: flex; justify-content: space-between; margin-bottom: 10px; }
+.total { color: var(--primary); font-size: 1.2rem; font-weight: bold; margin-top: 15px; }
+
+.delivery-badge { 
+  background: #25232d; padding: 12px; border-radius: 10px; 
+  text-align: center; margin-bottom: 20px; border: 1px dashed var(--primary);
+}
+
+.btn-whatsapp {
+  width: 100%; padding: 18px; background: var(--primary);
+  border: none; border-radius: 30px; font-weight: bold;
+  font-size: 16px; cursor: pointer; transition: 0.3s;
+}
+
+.btn-whatsapp:hover { transform: scale(1.02); background: #d69004; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .order-container { grid-template-columns: 1fr; }
+  .sticky-card { position: static; }
+   nav {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+    }
+    nav .nav_p {
+        width: 100%;
+        justify-content: space-around;
+        margin-top: 10px;
+    }
+>>>>>>> da0705e (Changing Footer Design For mobile version)
 }

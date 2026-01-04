@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *{
     margin: 0;
     padding: 0;
@@ -460,4 +461,470 @@ center p{
     .card{
         width: 400px;
     }
+=======
+*{
+    margin: 0;
+    padding: 0;
+    color: gray;
+    font-family: sans-serif;
+}
+html,body{
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #0a0a0a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Sabse upar rahega */
+    transition: opacity 0.8s ease, visibility 0.8s;
+}
+
+.loader-content {
+    text-align: center;
+}
+
+.loader-logo {
+    font-size: 3rem;
+    color: #f1ae2c;
+    margin-bottom: 20px;
+    letter-spacing: 5px;
+}
+
+.loader-logo span {
+    color: #808080; /* Gray color for 'Print' */
+}
+
+.loader-bar {
+    width: 200px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 0 auto;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress {
+    width: 0%;
+    height: 100%;
+    background: #f1ae2c;
+    position: absolute;
+    animation: loading 2s infinite ease-in-out;
+}
+
+@keyframes loading {
+    0% { width: 0%; left: 0; }
+    50% { width: 100%; left: 0; }
+    100% { width: 0%; left: 100%; }
+}
+
+#preloader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+.main{
+    height: 100vh;
+    width: 100wh;
+}
+.page1{
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    background: linear-gradient(45deg,#836526,#211f29,#211f29,#211f29);
+}
+/* Nav bar */
+nav{
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+nav .nav_p{
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+}
+nav a{
+    position: relative;
+    text-decoration: none;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+nav a::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 2px;
+    background: #f1ae2c;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease;
+}
+nav a:hover::after{
+    transform: scaleX(1);
+}
+nav a:hover{
+    color: #f1ae2c;
+    transition:.5s ease;
+}
+nav h1{
+    color: #f1ae2c;
+}
+.text-container h1 {
+    font-size: 4vw; /* Responsive size */
+    color: white;
+    word-wrap: break-word; /* Lambe words ko break karega */
+    overflow-wrap: break-word;
+    max-width: 100%; /* Screen se bahar nahi jayega */
+    display: inline-block; /* Container ko text ke size ka rakhega */
+}
+#typing-text {
+    color: #f1ae2c;
+    /* Is line ko dhyan se dekhein: */
+    white-space: pre-wrap; /* Yeh space ko preserve karega aur line wrap bhi hone dega */
+    display: inline; 
+}
+.cursor {
+    color: #f1ae2c;
+    font-weight: 200;
+    animation: blink 0.8s infinite;
+}
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+/* Infinite Scroll Wrapper */
+.marquee-container {
+    width: 100%;
+    overflow: hidden;
+    background: #211f29;
+    padding: 20px 0;
+    border-top: 1px solid #3d3b46;
+    border-bottom: 1px solid #3d3b46;
+}
+
+.marquee-content {
+    display: flex;
+    width: calc(250px * 10);
+    animation: scroll 20s linear infinite;
+}
+
+.marquee-item {
+    width: 250px;
+    padding: 0 20px;
+    color: #f1ae2c;
+    font-weight: bold;
+    font-size: 1.2rem;
+    white-space: nowrap;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-250px * 5)); }
+}
+/* main part */
+.center{
+    display: flex;
+    height: 90vh;
+}
+
+.cartoon{
+    width: 70%;
+}
+.cartoon img{
+    width: 100%;
+}
+.main_text{
+    height: 100%;
+    width: 60%;
+    display: flex;
+    text-transform: uppercase;
+    align-items: center;
+}
+.main_text h1{
+    color: #f1ae2c;
+    font-size: 3vw;
+    line-height: 1;
+}
+.main_text h5{
+    color: gray;
+}
+/* button */
+.trace-btn {
+    position: relative;
+    padding: 15px 35px;
+    background: transparent;
+    border: 1px solid rgba(241, 174, 44, 0.2);
+    color: #f1ae2c;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+.btn-cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #211f29;
+    gap: 20px;
+}
+.btn-cont button{
+    width: 40%;
+}
+/* Trace Lines Styling */
+.trace-btn .line {
+    position: absolute;
+    background: #f1ae2c;
+    transition: all 0.4s linear;
+}
+
+.line-1 { top: 0; left: -100%; width: 100%; height: 2px; }
+.line-2 { top: -100%; right: 0; width: 2px; height: 100%; }
+.line-3 { bottom: 0; right: -100%; width: 100%; height: 2px; }
+.line-4 { bottom: -100%; left: 0; width: 2px; height: 100%; }
+
+/* Hover Animations */
+.trace-btn:hover {
+    box-shadow: 0 0 25px rgba(241, 174, 44, 0.4);
+    background: rgba(241, 174, 44, 0.05);
+}
+
+.trace-btn:hover .line-1 { left: 100%; }
+.trace-btn:hover .line-2 { top: 100%; }
+.trace-btn:hover .line-3 { right: 100%; }
+.trace-btn:hover .line-4 { bottom: 100%; }
+
+.trace-btn:active {
+    transform: scale(0.95);
+}
+/* page4 */
+.page4{
+   overflow-x: hidden; 
+   background: #211f29;
+   height: auto;
+}
+.journey-section{
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+.scroll-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: rgba(241, 174, 44, 0.1);
+            transform: translateX(-50%);
+        }
+        .line-progress {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 4px;
+            height: 0%;
+            background: #f1ae2c;
+            transform: translateX(-50%);
+            box-shadow: 0 0 15px #f1ae2c;
+        }
+
+        .step {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10%;
+            position: relative;
+        }
+
+        .step-content { width: 40%; opacity: 0; transform: translateY(50px); }
+        .step-visual { width: 45%; display: flex; justify-content: center; }
+        
+        .step:nth-child(even) { flex-direction: row-reverse; }
+
+        .step h2 { color: #f1ae2c; font-size: 2.5rem; margin-bottom: 15px; }
+        .step p { color: gray; font-size: 1.1rem; line-height: 1.6; }
+
+        /* Floating Ink Drops */
+        .ink-drop {
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            position: absolute;
+            filter: blur(10px);
+            opacity: 0.6;
+        }
+/* footer of website */
+footer{
+    height: 35vh;
+    background: #211f29;
+    display: flex;
+    align-items: center;
+}
+footer a{
+    text-decoration: none;
+}
+.footer-container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.footer-box{
+    width: 20%;
+}
+.footer-box ul li{
+    list-style-type: none;
+}
+.footer-box h3,h4{
+    color: #f1ae2c;
+}
+.footer-box a:hover{
+    color: #f1ae2c;
+    transition: 0.2s ease-in-out;
+}
+.footer-box .social-links a:hover{
+    color: #f1ae2c;
+    transition: 0.2s ease-in-out;
+}
+center p{
+    background: #211f29;
+}
+/* /page3 */
+.page3{
+    height: auto;
+    background: #211f29;
+}
+.products-3d {
+    padding: 100px 5%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card-container {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    width: 250px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    transform-style: preserve-3d; /* Important for 3D depth */
+    transition: box-shadow 0.3s;
+}
+
+.card:hover {
+    box-shadow: 0 20px 50px rgba(241, 174, 44, 0.2);
+}
+
+.card img {
+    width: 100%;
+    border-radius: 15px;
+    transform: translateZ(30px); /* Makes image pop out */
+}
+
+.card h3 {
+    margin-top: 20px;
+    color: #f1ae2c;
+    transform: translateZ(50px);
+}
+/* About page2 */
+.page2{
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(45deg,#211f29,#211f29,#211f29);
+}
+.page2 h1{
+    color: #f1ae2c;
+    padding: 10px;
+}
+.about_content{
+    height: 45vh;
+    display: flex;
+}
+.about_content .box{
+    height: 40vh;
+    width: 50%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.about_content .box img{
+    height: 40vh;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+.about_content .box img:hover{
+    transform: translateY(-10px);
+    box-shadow: 0px 0px 5px 0px #f1ae2c;
+}
+@media (max-width: 768px){
+    nav {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+    }
+    nav .nav_p {
+        width: 100%;
+        justify-content: space-around;
+        margin-top: 10px;
+    }
+    .main h1 {
+        font-size: 24px;
+        padding: 10px;
+    }
+    .center{
+        flex-direction: column-reverse; /* Image ko text ke upar ya niche lane ke liye */
+        text-align: center;
+    }
+    .cartoon{
+        display: none;
+    }
+    .main_text h1 {
+        font-size: 6vw; 
+    }
+    .main_text{
+        width: 100%;
+        justify-content: center;
+    }
+    .page4{
+        display: none;
+    }
+    footer {
+        height: auto;
+        padding: 20px;
+    }
+    .footer-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .footer-box {
+        width: 90%;
+        margin: 0 auto;
+    }
+    .card{
+        width: 300px;
+    }
+>>>>>>> da0705e (Changing Footer Design For mobile version)
 }

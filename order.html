@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -170,4 +171,183 @@ _(Note: Agar aapne reference image select ki hai, toh kripya use abhi yahan atta
   updatePricing();
 </script>
 </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Now - PrintWala</title>
+  <link rel="stylesheet" href="order.css">
+</head>
+<body>
+
+<nav>
+  <h1><span>Print</span> Wala</h1>
+  <div class="nav_p">
+    <a href="index.html">Home</a>
+    <a href="product.html">Products</a>
+    <a href="index.html#about_page">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<div class="main-wrapper">
+  <div class="order-container">
+    
+    <div class="form-section">
+      <h2 class="section-title">Complete Your Order</h2>
+      
+      <form id="orderForm">
+        <div class="step-card">
+          <div class="step-header"><span class="step-num">1</span> <h3>Customer Details</h3></div>
+          <div class="input-grid">
+            <input type="text" id="custName" placeholder="Full Name" required>
+            <input type="tel" id="custPhone" placeholder="WhatsApp Number" required>
+          </div>
+          <input type="text" id="custPincode" placeholder="Pincode" maxlength="6" required oninput="updatePricing()">
+          <textarea id="custAddress" placeholder="Full Delivery Address" required></textarea>
+        </div>
+
+        <div class="step-card">
+          <div class="step-header"><span class="step-num">2</span> <h3>Design Instructions</h3></div>
+          <textarea id="designBrief" placeholder="Describe your design (Colors, Text, Fonts etc.)" required></textarea>
+          <div class="file-input-wrapper">
+            <label>Upload Reference (Optional)</label>
+            <input type="file" id="refImage" accept="image/*">
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-header"><span class="step-num">3</span> <h3>Quantity</h3></div>
+          <div class="qty-control">
+            <label>How many pieces?</label>
+            <input type="number" id="qty" min="1" value="1" oninput="updatePricing()">
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sticky-card">
+        <div class="preview-header">
+          <img id="productImg" src="" alt="Product">
+          <h3 id="productName">Product Name</h3>
+        </div>
+        
+        <div class="order-summary">
+          <div class="summary-line"><span>Item Price</span><span id="basePriceDisp">₹0</span></div>
+          <div class="summary-line"><span>Shipping</span><span id="shipPriceDisp">₹0</span></div>
+          <div class="summary-line total"><span>Final Total</span><span id="totalPriceDisp">₹0</span></div>
+        </div>
+
+        <div class="delivery-badge">
+          <span>🚚 Delivery by:</span>
+          <strong id="deliveryDate">Calculating...</strong>
+        </div>
+
+        <button type="submit" form="orderForm" class="btn-whatsapp">Confirm on WhatsApp</button>
+        <p class="trust-note">✅ Quality Checked & Doorstep Delivery</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script>
+  var tl = gsap.timeline();
+
+tl.from("nav h1, nav .nav_p a,step-card,form-section", {
+    y: -50,
+    opacity: 0,
+    delay:0.1,
+    duration: 0.5,
+    stagger: 0.1,
+    ease: "power2.out"
+});
+  const params = new URLSearchParams(window.location.search);
+  const pName = params.get("name") || "Custom Product";
+  const pPrice = parseInt(params.get("price")) || 0;
+  const pImg = params.get("img");
+
+  document.getElementById("productName").innerText = pName;
+  if (pImg) document.getElementById("productImg").src = pImg;
+
+  function updatePricing() {
+    const qty = document.getElementById("qty").value || 1;
+    const pincode = document.getElementById("custPincode").value;
+    let shipping = 0;
+    if (pincode.length === 6) {
+          if (pincode.startsWith('226')) {
+              shipping = 0; // FREE for Lucknow
+          } else if (pincode.startsWith('2')) {
+              shipping = 50; // UP Region
+          } else {
+              shipping = 100; // Rest of India
+          }
+      }
+
+    const itemTotal = pPrice * qty;
+    const finalTotal = itemTotal + shipping;
+
+    document.getElementById("basePriceDisp").innerText = "₹" + itemTotal;
+    document.getElementById("shipPriceDisp").innerText = "₹" + shipping;
+    document.getElementById("totalPriceDisp").innerText = "₹" + finalTotal;
+
+    const date = new Date();
+    date.setDate(date.getDate() + 5);
+    const dateString = date.toLocaleDateString('en-IN', { day: 'numeric', month: 'long' });
+    document.getElementById("deliveryDate").innerText = dateString;
+    return dateString;
+  }
+
+  document.getElementById("orderForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("custName").value;
+    const phone = document.getElementById("custPhone").value;
+    const pincode = document.getElementById("custPincode").value;
+    const address = document.getElementById("custAddress").value;
+    const brief = document.getElementById("designBrief").value;
+    const qty = document.getElementById("qty").value;
+    const itemPrice = document.getElementById("basePriceDisp").innerText;
+    const shipping = document.getElementById("shipPriceDisp").innerText;
+    const total = document.getElementById("totalPriceDisp").innerText;
+    const deliveryDate = document.getElementById("deliveryDate").innerText;
+
+    const message = 
+`*📦 NEW ORDER - PrintWala*
+------------------------------
+*PRODUCT DETAILS:*
+🔸 Item: ${pName}
+🔸 Price: ${itemPrice}
+🔸 Quantity: ${qty}
+🔸 Shipping: ${shipping}
+*Total Amount: ${total}*
+
+*📍 CUSTOMER DETAILS:*
+👤 Name: ${name}
+📞 WhatsApp: ${phone}
+🏠 Address: ${address}
+📌 Pincode: ${pincode}
+
+*🎨 DESIGN INSTRUCTIONS:*
+"${brief}"
+
+*🚚 DELIVERY INFO:*
+Estimated by: ${deliveryDate}
+------------------------------
+_(Note: Agar aapne reference image select ki hai, toh kripya use abhi yahan attach karke bhein.)_`;
+
+    const whatsappNumber = "8869942542";
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+    window.open(whatsappURL, "_blank");
+  });
+  updatePricing();
+</script>
+</body>
+>>>>>>> da0705e (Changing Footer Design For mobile version)
 </html>
